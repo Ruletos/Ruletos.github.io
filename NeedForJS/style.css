@@ -1,0 +1,15 @@
+body {
+  background-color: black;
+}
+.hide {
+  display: none;
+}
+.car1 {
+  height: 100px;
+  width: 50px;
+  background-image: url(img/car.png);
+  background-size: cover;
+  background-color: transparent;
+  background-position: center;
+  background-repeat: no-repeat;
+}
