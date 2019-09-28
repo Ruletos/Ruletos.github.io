@@ -1,9 +1,15 @@
 const gameArea = document.querySelector(".gameArea"),
       score = document.querySelector(".score"),
       start = document.querySelector(".start"),
-      car = document.createElement('div');
+      car = document.createElement('div'),
+      arrowT = document.querySelector('.arrowTop'),
+      arrowR = document.querySelector('.arrowRight'),
+      arrowB = document.querySelector('.arrowBottom'),
+      arrowL = document.querySelector('.arrowLeft');
 
-car.classList.add('car1')
+car.classList.add('car1');
+
+let scoreCounter = 0;
 
 let keys = {
   ArrowRight: false,
@@ -23,6 +29,14 @@ function getQElements(heightEl) {
 ;}
 
 function startGame(event) {
+  scoreCounter = 0;
+
+  gameArea.innerHTML = " ";
+  
+  score.classList.remove("score2"); 
+
+  car.style.top = 725 + "px";
+  car.style.left = 125 + "px";
 
   for (let i = 0; i <= getQElements(100); i++) {
     let l = document.createElement('div');
@@ -36,7 +50,7 @@ function startGame(event) {
     let c = document.createElement('div');
     c.classList.add('enemyCar');
     c.style.top = (((i + 1) * 100 - 300) * settings.traffic) + 'px';
-    c.y = (i * 100) * settings.traffic;
+    c.y = (i * 100) * settings.traffic - 1200;
     c.style.left = Math.floor(Math.random() * (300 - 50)) + 'px';
     gameArea.append(c);
   };
@@ -45,7 +59,6 @@ function startGame(event) {
   settings.start = true;
   requestAnimationFrame(playGame);
   gameArea.appendChild(car);
-  gameArea.classList.add("gameArea2");
   settings.x = car.offsetLeft;
   settings.y = car.offsetTop;
 };
@@ -66,8 +79,16 @@ function moveRoad() {
 function moveEnemy() {
   let enemy = document.querySelectorAll('.enemyCar');
   enemy.forEach((item) => {
+  let carRect = car.getBoundingClientRect();
+  let enemyRect = item.getBoundingClientRect();
+  
+  if (enemyRect.bottom >= carRect.top && enemyRect.left <= carRect.right && enemyRect.right >= carRect.left && enemyRect.top <= carRect.bottom) {
+    console.warn("ДТП");
+    settings.start = false;
+    start.classList.remove("hide");
+  };
+
   item.y += settings.speed - 0.5;
-  console.log(item.y)
 
   if (item.y > gameArea.offsetHeight) {
     item.y = -250;
@@ -78,6 +99,8 @@ function moveEnemy() {
 };
 
 function playGame() {
+  scoreCounter++;
+  score.innerHTML = 'SCORE </br>' + scoreCounter;
   console.log('playGame');
   if (settings.start) {
     moveRoad()
@@ -98,7 +121,7 @@ function playGame() {
       }
     };
     if (keys.ArrowDown) {
-      if (settings.y <= 830) {
+      if (settings.y <= 732) {
         settings.y += settings.speed;
       }
     };
@@ -118,6 +141,42 @@ function stopRun(event) {
   keys[event.code] = false;
 };
 
+function moveTop() {
+  keys.ArrowUp = true;
+};
+function stopTop() {
+  keys.ArrowUp = false;
+};
+
+function moveRight() {
+  keys.ArrowRight = true;
+};
+function stopRight() {
+  keys.ArrowRight = false;
+};
+
+function moveBottom() {
+  keys.ArrowDown = true;
+};
+function stopBottom() {
+  keys.ArrowDown = false;
+};
+
+function moveLeft() {
+  keys.ArrowLeft = true;
+};
+function stopLeft() {
+  keys.ArrowLeft = false;
+};
+
 document.addEventListener('keydown', startRun);
 document.addEventListener('keyup', stopRun);
 start.addEventListener('click', startGame);
+arrowT.addEventListener('mousedown', moveTop);
+arrowT.addEventListener('mouseup', stopTop);
+arrowR.addEventListener('mousedown', moveRight);
+arrowR.addEventListener('mouseup', stopRight);
+arrowB.addEventListener('mousedown', moveBottom);
+arrowB.addEventListener('mouseup', stopBottom);
+arrowL.addEventListener('mousedown', moveLeft);
+arrowL.addEventListener('mouseup', stopLeft);
