@@ -1,11 +1,7 @@
 const gameArea = document.querySelector(".gameArea"),
       score = document.querySelector(".score"),
       start = document.querySelector(".start"),
-      car = document.createElement('div'),
-      arrowT = document.querySelector('.arrowTop'),
-      arrowR = document.querySelector('.arrowRight'),
-      arrowB = document.querySelector('.arrowBottom'),
-      arrowL = document.querySelector('.arrowLeft');
+      car = document.createElement('div');
 
 car.classList.add('car1');
 
@@ -177,11 +173,3 @@ function stopLeft() {
 document.addEventListener('keydown', startRun);
 document.addEventListener('keyup', stopRun);
 start.addEventListener('click', startGame);
-arrowT.addEventListener('mousedown', moveTop);
-arrowT.addEventListener('mouseup', stopTop);
-arrowR.addEventListener('mousedown', moveRight);
-arrowR.addEventListener('mouseup', stopRight);
-arrowB.addEventListener('mousedown', moveBottom);
-arrowB.addEventListener('mouseup', stopBottom);
-arrowL.addEventListener('mousedown', moveLeft);
-arrowL.addEventListener('mouseup', stopLeft);
