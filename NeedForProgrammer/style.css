@@ -20,7 +20,7 @@ body, html, .game {
   width: 100px;
   border: 1px solid black;
   margin-right: 1%;
-  margin-top: 600px;
+  margin-top: 40%;
   background-color: black;
   color: #fff;
   text-align: center;
@@ -34,7 +34,7 @@ body, html, .game {
   height: 100px;
   width: 100px;
   border: 1px solid black;
-  margin-top: 600px;
+  margin-top: 40%;
   margin-right: 5px;
   background-color: black;
   color: #fff;
@@ -49,7 +49,7 @@ body, html, .game {
   height: 100px;
   width: 100px;
   border: 1px solid black;
-  margin-top: 600px;
+  margin-top: 40%;
   margin-left: 5px;
   background-color: black;
   color: #fff;
@@ -65,7 +65,7 @@ body, html, .game {
   width: 100px;
   border: 1px solid black;
   margin-left: 5px;
-  margin-top: 600px;
+  margin-top: 40%;
   background-color: black;
   color: #fff;
   text-align: center;

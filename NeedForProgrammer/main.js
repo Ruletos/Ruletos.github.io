@@ -40,7 +40,7 @@ function startGame(event) {
   
   score.classList.remove("score2"); 
 
-  car.style.top = 705 + "px";
+  car.style.top = 75 + "%";
   car.style.left = 125 + "px";
 
   for (let i = 0; i <= getQElements(100); i++) {
