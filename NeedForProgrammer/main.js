@@ -29,13 +29,18 @@ function getQElements(heightEl) {
 ;}
 
 function startGame(event) {
+  keys.ArrowUp = false;
+  keys.ArrowDown = false;
+  keys.ArrowLeft = false;
+  keys.ArrowRight = false;
+
   scoreCounter = 0;
 
   gameArea.innerHTML = " ";
   
   score.classList.remove("score2"); 
 
-  car.style.top = 725 + "px";
+  car.style.top = 705 + "px";
   car.style.left = 125 + "px";
 
   for (let i = 0; i <= getQElements(100); i++) {
